@@ -173,7 +173,6 @@ namespace SeatingPlanSolver
         {
             System.Diagnostics.Stopwatch AStopwatch = new System.Diagnostics.Stopwatch();
             AStopwatch.Start();
-            Permutation seatingPlan = new Permutation(1);
             double utility = 0;
             symR = (R + Matrix.Transpose(R)) / 2;
             symW = (W + Matrix.Transpose(W)) / 2;
@@ -198,7 +197,7 @@ namespace SeatingPlanSolver
                 if (testNumHappy > numHappy || n == 1)
                 {
                     utility = testUtility;
-                    seatingPlan = testSeatingPlan;
+                    this.optimalSeatingPlan = testSeatingPlan;
                     numHappy = testNumHappy;
                     System.Diagnostics.Debug.WriteLine("*** Trial #{0} ***", n);
                     System.Diagnostics.Debug.WriteLine(string.Format("New max: {0} Num Happy: {1}", utility, numHappy));
@@ -208,13 +207,13 @@ namespace SeatingPlanSolver
                     if (testUtility > utility)
                     {
                         utility = testUtility;
-                        seatingPlan = testSeatingPlan;
+                        this.optimalSeatingPlan = testSeatingPlan;
                         numHappy = testNumHappy;
                         System.Diagnostics.Debug.WriteLine("*** Trial #{0} ***", n);
                         System.Diagnostics.Debug.WriteLine(string.Format("New max: {0} Num Happy: {1}", utility, numHappy));
                     }
                 }
-                bw.ReportProgress((int)((double)n / (double)numTrials * 100.0));
+                //bw.ReportProgress((int)((double)n / (double)numTrials * 100.0));
             }
             AStopwatch.Stop();
             System.Diagnostics.Debug.WriteLine("Max Utility: {0}", utility);
