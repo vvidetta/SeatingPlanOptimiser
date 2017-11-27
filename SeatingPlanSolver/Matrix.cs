@@ -8,9 +8,15 @@ namespace SeatingPlanSolver
 {
     public class Matrix
     {
+        #region Data Members
+
         private double[,] matrix;
         private int rows;
         private int cols;
+
+        #endregion
+
+        #region Constructors
 
         public Matrix(int rows, int cols)
         {
@@ -26,21 +32,9 @@ namespace SeatingPlanSolver
                     this.matrix[i, j] = matrix[i, j];
         }
 
-        public double this[int i, int j]
-        {
-            get { return matrix[i - 1, j - 1]; }
-            set { matrix[i - 1, j - 1] = value; }
-        }
+        #endregion
 
-        public int Rows
-        {
-            get { return rows; }
-        }
-
-        public int Columns
-        {
-            get { return cols; }
-        }
+        #region Operations
 
         public static Matrix operator*(Matrix A, Matrix B)
         {
@@ -83,6 +77,16 @@ namespace SeatingPlanSolver
                     C[i, j] /= x;
 
             return C;
+        }
+
+        /// <summary>
+        /// Returns the symmetric part of the given matrix.
+        /// </summary>
+        /// <param name="M">The matrix to find the symmetric part of.</param>
+        /// <returns>The symmetric part of the given matrix.</returns>
+        public static Matrix SymmetricPart(Matrix M)
+        {
+            return (M + Matrix.Transpose(M)) / 2;
         }
 
         public int[] ToPermutation()
@@ -402,5 +406,27 @@ namespace SeatingPlanSolver
 
             return S.ToString();
         }
+
+        #endregion
+
+        #region Fields
+
+        public double this[int i, int j]
+        {
+            get { return matrix[i - 1, j - 1]; }
+            set { matrix[i - 1, j - 1] = value; }
+        }
+
+        public int Rows
+        {
+            get { return rows; }
+        }
+
+        public int Columns
+        {
+            get { return cols; }
+        }
+
+        #endregion
     }
 }

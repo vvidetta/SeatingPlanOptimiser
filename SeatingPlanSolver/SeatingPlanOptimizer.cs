@@ -153,7 +153,6 @@ namespace SeatingPlanSolver
         {
             this.relationshipPath = relationshipPath;
             this.R = Matrix.LoadFromCSV(relationshipPath);
-            symR = (R + Matrix.Transpose(R)) / 2;
         }
 
         public void LoadSeatingPlan(string seatingPlanPath)
@@ -166,7 +165,6 @@ namespace SeatingPlanSolver
         {
             this.weightPath = weightPath;
             this.W = Matrix.LoadFromCSV(weightPath);
-            this.symW = (W + Matrix.Transpose(W)) / 2;
         }
 
         public void Optimize(int numTrials)
@@ -174,8 +172,8 @@ namespace SeatingPlanSolver
             System.Diagnostics.Stopwatch AStopwatch = new System.Diagnostics.Stopwatch();
             AStopwatch.Start();
             double utility = 0;
-            symR = (R + Matrix.Transpose(R)) / 2;
-            symW = (W + Matrix.Transpose(W)) / 2;
+            symR = Matrix.SymmetricPart(R);
+            symW = Matrix.SymmetricPart(W);
 
             int numHappy = 0;
             List<Permutation> TestedPerms = new List<Permutation>(numTrials);
