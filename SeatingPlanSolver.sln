@@ -1,7 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeatingPlanSolver", "SeatingPlanSolver\SeatingPlanSolver.csproj", "{DA9F0B82-9222-4D06-8A99-3083AA4EFD3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Data", "Sample Data", "{07F5E3DA-0E64-4BAF-A198-53EF60D3C451}"
+	ProjectSection(SolutionItems) = preProject
+		Sample Data\guests.csv = Sample Data\guests.csv
+		Sample Data\ReadMe.md = Sample Data\ReadMe.md
+		Sample Data\relationships.csv = Sample Data\relationships.csv
+		Sample Data\Table.png = Sample Data\Table.png
+		Sample Data\weights.csv = Sample Data\weights.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
